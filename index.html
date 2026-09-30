@@ -58,7 +58,9 @@ function updateWalkButton(){if($('walkStart').value&&!$('walkEnd').value)$('star
 function toggleDetails(){$('gymDetails').style.display=$('gym').checked?'block':'none';$('otherDetails').style.display=$('otherWorkout').checked?'block':'none';$('aerobic2Details').style.display=$('aerobic2').checked?'grid':'none'}
 ['gym','otherWorkout','aerobic2'].forEach(id=>$(id).addEventListener('change',toggleDetails));
 $('wake').addEventListener('change',()=>{if($('wake').checked&&!$('wakeTime').value)$('wakeTime').value=nowTime()});
-['walkStart','walkEnd','aerobic2Start','aerobic2End'].forEach(id=>$(id).addEventListener('change',()=>{updateDurations();updateWalkButton()}));
+$('wakeTime').addEventListener('change',()=>{if($('wakeTime').value)$('wake').checked=true});
+['walkStart','walkEnd'].forEach(id=>$(id).addEventListener('change',()=>{if($(id).value)$('walk').checked=true;updateDurations();updateWalkButton()}));
+['aerobic2Start','aerobic2End'].forEach(id=>$(id).addEventListener('change',()=>{if($(id).value){$('aerobic2').checked=true;toggleDetails()}updateDurations();updateWalkButton()}));
 $('aerobic2StartBtn').onclick=()=>{$('aerobic2').checked=true;toggleDetails();if(!$('aerobic2Start').value)$('aerobic2Start').value=nowTime();updateDurations()};
 $('aerobic2StopBtn').onclick=()=>{$('aerobic2').checked=true;toggleDetails();$('aerobic2End').value=nowTime();updateDurations()};
 $('restDay').addEventListener('change',()=>{if($('restDay').checked){['gym','hiit','otherWorkout'].forEach(id=>$(id).checked=false);toggleDetails()}});
