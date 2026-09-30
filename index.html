@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f2e8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Aamurutiini" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <title>Aamurutiini</title>
+  <style>
+    :root{
+      --bg:#f7f2e8; --card:#fffdf8; --text:#23211d; --muted:#746f66;
+      --line:#e3ddd1; --accent:#d97a32; --accent2:#2f6d5a; --danger:#a8493d;
+      --shadow:0 10px 30px rgba(60,45,25,.08);
+    }
+    *{box-sizing:border-box}
+    html{background:var(--bg)}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    button,input,select,textarea{font:inherit}
+    .app{max-width:760px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(36px + env(safe-area-inset-bottom))}
+    .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin:2px 0 18px}
+    h1{margin:0;font-size:32px;letter-spacing:-.6px}
+    .date{color:var(--muted);font-size:14px;margin-top:5px}
+    .streak{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px 14px;box-shadow:var(--shadow);text-align:center;min-width:92px}
+    .streak b{display:block;font-size:26px;color:var(--accent)}
+    .streak span{font-size:12px;color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:14px 0;box-shadow:var(--shadow)}
+    .hero{background:linear-gradient(160deg,#fff7e8,#fffdf8 58%)}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
+    .quote{font-size:22px;line-height:1.35;font-weight:750;margin:8px 0 0;letter-spacing:-.25px}
+    .sub{color:var(--muted);line-height:1.45;margin:8px 0 0}
+    .big{width:100%;border:0;border-radius:18px;padding:17px 18px;background:var(--accent2);color:white;font-weight:800;font-size:18px;margin-top:14px;box-shadow:0 8px 20px rgba(47,109,90,.18)}
+    .big:active,.btn:active{transform:translateY(1px)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:520px){.grid{grid-template-columns:1fr}}
+    .option{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff}
+    .option input{width:22px;height:22px;accent-color:var(--accent2)}
+    label.title{display:block;font-weight:800;margin-bottom:8px}
+    select,textarea,input[type="text"]{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;color:var(--text)}
+    textarea{min-height:92px;resize:vertical}
+    .moods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .workoutDetails{display:grid;gap:12px;margin-top:14px}
+    .hint{font-size:13px;color:var(--muted);line-height:1.4;margin-top:6px}
+    .btn{border:0;border-radius:14px;padding:13px 14px;background:#eee8dd;color:var(--text);font-weight:750}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.full{width:100%}
+    .timerWrap{display:none;text-align:center;padding-top:12px}
+    .timer{font-size:48px;font-variant-numeric:tabular-nums;font-weight:850;letter-spacing:-1px;margin:8px 0}
+    .timerNote{color:var(--muted);font-size:14px}
+    .historyItem{padding:13px 0;border-bottom:1px solid var(--line)}
+    .historyItem:last-child{border-bottom:0}
+    .historyHead{display:flex;justify-content:space-between;gap:10px;font-weight:800}
+    .badges{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px}
+    .badge{font-size:12px;border-radius:999px;padding:5px 8px;background:#f0eadf;color:#4e493f}
+    .thanks{margin-top:7px;color:#403c35;line-height:1.4}
+    .empty{color:var(--muted);padding:8px 0}
+    .footer{color:var(--muted);font-size:12px;text-align:center;line-height:1.45;margin-top:18px}
+    .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(18px);background:#24211d;color:#fff;padding:11px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:10;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div>
+      <h1>Huomenta ☀️</h1>
+      <div class="date" id="dateText"></div>
+    </div>
+    <div class="streak"><b id="streak">0</b><span>päivän putki</span></div>
+  </div>
+
+  <section class="card hero">
+    <div class="eyebrow">Tämän aamun ajatus</div>
+    <div class="quote" id="quote"></div>
+    <p class="sub">Sinun ei tarvitse odottaa motivaatiota. Aloita ensin — hyvä mieli saa tulla tekemisen jälkeen.</p>
+    <button class="big" id="startWalk">Aloita aamulenkki</button>
+    <div class="timerWrap" id="timerWrap">
+      <div class="eyebrow">5 minuutin sadepäivän aloitus</div>
+      <div class="timer" id="timer">05:00</div>
+      <div class="timerNote">Kun aika loppuu, päätä vasta sitten jatkatko. Lähtö on jo voitto.</div>
+      <button class="btn" id="timerToggle" style="margin-top:10px">Käynnistä 5 min</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <label class="title">Miten toteutit aamun?</label>
+    <div class="grid">
+      <label class="option"><input type="checkbox" id="wake"> Nousin klo 7</label>
+      <label class="option"><input type="checkbox" id="walk"> Aamulenkki</label>
+      <label class="option"><input type="checkbox" id="rain"> Sade: 5 min sääntö</label>
+      <label class="option"><input type="checkbox" id="indoor"> Sisärutiini 20–30 min</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="moods">
+      <div><label class="title" for="before">Olo ennen</label><select id="before"><option value="">Valitse 1–5</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div><label class="title" for="after">Olo jälkeen</label><select id="after"><option value="">Valitse 1–5</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">Päivän treeni</div>
+    <label class="title" style="margin-top:8px">Mitä teit tänään?</label>
+    <div class="grid">
+      <label class="option"><input type="checkbox" id="gym"> Salitreeni</label>
+      <label class="option"><input type="checkbox" id="hiit"> HIIT-treeni</label>
+      <label class="option"><input type="checkbox" id="otherWorkout"> Muu treeni</label>
+      <label class="option"><input type="checkbox" id="restDay"> Lepo / palautuminen</label>
+    </div>
+
+    <div class="workoutDetails">
+      <div id="gymDetails">
+        <label class="title" for="gymFocus">Salitreeni – mitä treenasit?</label>
+        <input type="text" id="gymFocus" placeholder="Esim. rinta + ojentajat, selkä, jalat…">
+      </div>
+      <div id="otherDetails">
+        <label class="title" for="otherWorkoutName">Muu treeni – mikä?</label>
+        <input type="text" id="otherWorkoutName" placeholder="Esim. pyöräily, uinti, pitkä kävely…">
+      </div>
+      <div>
+        <label class="title" for="workoutFeel">Miltä treeni tuntui?</label>
+        <select id="workoutFeel">
+          <option value="">Valitse 1–5</option>
+          <option value="1">1 – Erittäin raskaalta / huonolta</option>
+          <option value="2">2 – Raskaalta</option>
+          <option value="3">3 – Kohtalaiselta</option>
+          <option value="4">4 – Hyvältä</option>
+          <option value="5">5 – Erittäin hyvältä</option>
+        </select>
+      </div>
+      <div>
+        <label class="title" for="workoutNotes">Treeniin liittyvä huomio <span style="font-weight:500;color:var(--muted)">(vapaaehtoinen)</span></label>
+        <textarea id="workoutNotes" placeholder="Esim. hyvä voimataso, väsytti, palautuminen hyvä…" style="min-height:72px"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <label class="title" for="thanks">Kiitos itselleni tänään</label>
+    <textarea id="thanks" placeholder="Esim. Kiitos, että lähdin liikkeelle vaikka ei huvittanut."></textarea>
+    <button class="btn primary full" id="save" style="margin-top:12px">Tallenna päivä</button>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">Viime päivät</div>
+    <div id="history"></div>
+  </section>
+
+  <div class="footer">Tiedot tallennetaan tässä versiossa vain tähän puhelimeen. Aamurutiinin lisäksi voit seurata sali-, HIIT- ja muita treenejä sekä niiden fiilistä. Myöhemmin voimme lisätä varmuuskopion, sään, tilastot ja omat muistutukset.</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const q = [
+  "Tänään ei tarvitse tehdä täydellisesti. Riittää, että aloitat.",
+  "Ensimmäinen askel on tärkeämpi kuin tämän aamun fiilis.",
+  "Pidä lupaus itsellesi. Hyvä olo tulee usein vasta liikkeelle lähdön jälkeen.",
+  "Viisi minuuttia riittää alkuun. Päätä jatkosta vasta sen jälkeen.",
+  "Aamun ensimmäinen voitto: nousit ja lähdit. Se riittää muuttamaan päivän suunnan.",
+  "Sade ei peru rutiinia. Se antaa mahdollisuuden huomata, että pystyt silti.",
+  "Älä kysy huvittaako. Kysy: mikä on seuraava pieni teko?",
+  "Tee ensin. Arvioi olo vasta jälkeenpäin.",
+  "Yksi hyvä teko aamulla voi kantaa pitkälle päivään.",
+  "Tänään rakennat tapaa, et suorita testiä."
+];
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,'0');
+const localDateKey = (d=new Date()) => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const dateKey = localDateKey();
+const storeKey = 'aamurutiini-v1';
+const fmtDate = new Intl.DateTimeFormat('fi-FI',{weekday:'long',day:'numeric',month:'long'});
+$('dateText').textContent = fmtDate.format(new Date());
+
+function daySeed(){
+  const d=new Date();
+  return Math.floor((d - new Date(d.getFullYear(),0,0))/86400000);
+}
+$('quote').textContent=q[daySeed()%q.length];
+
+function loadAll(){try{return JSON.parse(localStorage.getItem(storeKey)||'{}')}catch{return {}}}
+function saveAll(x){localStorage.setItem(storeKey,JSON.stringify(x))}
+function done(x){return !!(x && (x.walk||x.rain||x.indoor))}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function esc(s=''){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+function loadToday(){
+  const x=loadAll()[dateKey]||{};
+  ['wake','walk','rain','indoor','gym','hiit','otherWorkout','restDay'].forEach(k=>$(k).checked=!!x[k]);
+  $('before').value=x.before||'';
+  $('after').value=x.after||'';
+  $('gymFocus').value=x.gymFocus||'';
+  $('otherWorkoutName').value=x.otherWorkoutName||'';
+  $('workoutFeel').value=x.workoutFeel||'';
+  $('workoutNotes').value=x.workoutNotes||'';
+  $('thanks').value=x.thanks||'';
+  toggleWorkoutFields();
+}
+function hasWorkout(x){return !!(x && (x.gym||x.hiit||x.otherWorkout))}
+function toggleWorkoutFields(){
+  $('gymDetails').style.display=$('gym').checked?'block':'none';
+  $('otherDetails').style.display=$('otherWorkout').checked?'block':'none';
+}
+['gym','otherWorkout'].forEach(id=>$(id).addEventListener('change',toggleWorkoutFields));
+$('restDay').addEventListener('change',()=>{
+  if($('restDay').checked){
+    ['gym','hiit','otherWorkout'].forEach(id=>$(id).checked=false);
+    toggleWorkoutFields();
+  }
+});
+['gym','hiit','otherWorkout'].forEach(id=>$(id).addEventListener('change',()=>{
+  if($(id).checked) $('restDay').checked=false;
+}));
+
+function calcStreak(all){
+  let s=0,d=new Date();
+  for(let i=0;i<365;i++){
+    const k=localDateKey(d);
+    if(done(all[k])) s++;
+    else if(i===0){ /* tämän päivän voi vielä tehdä */ }
+    else break;
+    d.setDate(d.getDate()-1);
+  }
+  return s;
+}
+function render(){
+  const all=loadAll();$('streak').textContent=calcStreak(all);
+  const keys=Object.keys(all).sort().reverse().slice(0,10);
+  if(!keys.length){$('history').innerHTML='<div class="empty">Ensimmäinen merkintäsi tulee tähän.</div>';return}
+  $('history').innerHTML=keys.map(k=>{
+    const x=all[k], badges=[];
+    if(x.wake) badges.push('klo 7'); if(x.walk) badges.push('aamulenkki'); if(x.rain) badges.push('5 min sade'); if(x.indoor) badges.push('sisärutiini');
+    if(x.gym) badges.push('salitreeni'); if(x.hiit) badges.push('HIIT'); if(x.otherWorkout) badges.push('muu treeni'); if(x.restDay) badges.push('lepo');
+    const mood = x.before||x.after ? `<div class="sub" style="margin-top:6px">Aamuolo ${x.before||'–'} → ${x.after||'–'} / 5</div>` : '';
+    const workoutParts=[];
+    if(x.gym && x.gymFocus) workoutParts.push(`<b>Salilla:</b> ${esc(x.gymFocus)}`);
+    if(x.otherWorkout && x.otherWorkoutName) workoutParts.push(`<b>Muu treeni:</b> ${esc(x.otherWorkoutName)}`);
+    if(x.workoutFeel) workoutParts.push(`<b>Treenifiilis:</b> ${esc(x.workoutFeel)}/5`);
+    if(x.workoutNotes) workoutParts.push(esc(x.workoutNotes));
+    const workout = workoutParts.length ? `<div class="sub" style="margin-top:7px">${workoutParts.join(' · ')}</div>` : '';
+    const check = (done(x)||hasWorkout(x))?'✓':'';
+    return `<div class="historyItem"><div class="historyHead"><span>${k.split('-').reverse().join('.')}</span><span>${check}</span></div><div class="badges">${badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>${mood}${workout}${x.thanks?`<div class="thanks">“${esc(x.thanks)}”</div>`:''}</div>`
+  }).join('');
+}
+$('save').addEventListener('click',()=>{
+  const all=loadAll();
+  all[dateKey]={
+    wake:$('wake').checked,walk:$('walk').checked,rain:$('rain').checked,indoor:$('indoor').checked,
+    before:$('before').value,after:$('after').value,
+    gym:$('gym').checked,hiit:$('hiit').checked,otherWorkout:$('otherWorkout').checked,restDay:$('restDay').checked,
+    gymFocus:$('gymFocus').value.trim(),otherWorkoutName:$('otherWorkoutName').value.trim(),
+    workoutFeel:$('workoutFeel').value,workoutNotes:$('workoutNotes').value.trim(),
+    thanks:$('thanks').value.trim(),savedAt:new Date().toISOString()
+  };
+  saveAll(all);render();toast('Päivä tallennettu ✓');
+});
+
+$('startWalk').addEventListener('click',()=>{
+  $('walk').checked=true;$('timerWrap').style.display='block';$('timerWrap').scrollIntoView({behavior:'smooth',block:'center'});toast('Hyvä. Nyt vain liikkeelle.');
+});
+
+let secs=300, running=false, timerId=null;
+function renderTimer(){ $('timer').textContent=`${pad(Math.floor(secs/60))}:${pad(secs%60)}` }
+$('timerToggle').addEventListener('click',()=>{
+  if(running){clearInterval(timerId);running=false;$('timerToggle').textContent='Jatka';return}
+  if(secs<=0) secs=300;
+  running=true;$('rain').checked=true;$('timerToggle').textContent='Tauko';
+  timerId=setInterval(()=>{
+    secs--;renderTimer();
+    if(secs<=0){clearInterval(timerId);running=false;$('timerToggle').textContent='Valmis ✓';toast('5 minuuttia tehty — päätä nyt jatkatko.'); if(navigator.vibrate) navigator.vibrate([200,100,200]);}
+  },1000);
+});
+renderTimer();loadToday();render();
+
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
