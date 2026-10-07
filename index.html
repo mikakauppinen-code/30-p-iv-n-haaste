@@ -235,11 +235,11 @@ function renderWorkout(){
   return '<section class="trainCard" data-exercise-card="'+i+'"><div class="trainHead"><b>'+name+'</b><button class="btn" data-swap="'+i+'">Vaihda liike</button></div><div class="mini">'+(type==='hiit'?'Tee työ- ja palautusjaksot oman kuntosi mukaan.':type==='mobility'?'Rauhallisesti, ilman pakottamista.':setCount+' työsarjaa · '+repRange+' toistoa · lepää tarvittaessa 1–2 min')+'</div>'+rampHtml+(type==='hiit'||type==='mobility'?'':'<div class="setrow">'+tiles+'</div>')+'</section>'
  }).join('');
  document.querySelectorAll('[data-swap]').forEach(b=>b.onclick=()=>{const i=+b.dataset.swap,opts=plans[type][i];let idx=opts.indexOf(chosen[i]);chosen[i]=opts[(idx+1)%opts.length];state[type]=chosen;saveTrainState(state);renderWorkout()});
- const modal=$('setEntryModal'),hideModal=()=>{modal.style.display='none'};
+ const modal=$('setEntryModal'),hideModal=()=>{const restoreY=Number(modal.dataset.returnScrollY)||0;if(modal.contains(document.activeElement))document.activeElement.blur();modal.style.display='none';requestAnimationFrame(()=>window.scrollTo(0,restoreY));setTimeout(()=>window.scrollTo(0,restoreY),500)};
  $('cancelSetEntry').onclick=hideModal;modal.onclick=e=>{if(e.target===modal)hideModal()};
  document.querySelectorAll('[data-open-set]').forEach(b=>b.onclick=()=>{
   const ex=+b.dataset.openSet,n=+b.dataset.setNumber,name=chosen[ex],s=suggestion(name,n),entry=s.entry;
-  modal.dataset.exercise=name;modal.dataset.setNumber=n;modal.dataset.exerciseIndex=ex;
+  modal.dataset.exercise=name;modal.dataset.setNumber=n;modal.dataset.exerciseIndex=ex;modal.dataset.returnScrollY=String(window.scrollY);
   $('setModalTitle').textContent=name+' · sarja '+n;
   $('setModalHint').textContent='Ohjelman tavoite: '+s.target+' toistoa. Kirjaa toteutuneet toistot valikosta; myös tavoitetta enemmän voi merkitä.';
   $('setModalWeight').value=entry?.weight??s.weight;fillRepPicker(s.target,entry?.reps??s.target);updateSetModalWarmup(name,$('setModalWeight').value);modal.style.display='flex';$('setModalWeight').focus();
@@ -248,13 +248,21 @@ function renderWorkout(){
  $('saveSetEntry').onclick=()=>{
   const name=modal.dataset.exercise,n=+modal.dataset.setNumber,weight=$('setModalWeight').value,reps=$('setModalReps').value;
   if(!reps||Number(reps)<0){$('setModalReps').focus();return}
-  const ex=+modal.dataset.exerciseIndex,s=suggestion(name,n);
+  const ex=+modal.dataset.exerciseIndex,s=suggestion(name,n),card=document.querySelector('[data-exercise-card="'+ex+'"]');
   const st=trainState();st.currentSets=st.currentSets||{};st.currentSets[type]=st.currentSets[type]||{};st.currentSets[type][name]=st.currentSets[type][name]||{};
   st.currentSets[type][name][n]={weight,reps,target:s.target};
   st.last=st.last||{};if(weight)st.last[name]={weight,reps};
-  const anchor=document.querySelector('[data-exercise-card="'+ex+'"]'),anchorTop=anchor?anchor.getBoundingClientRect().top:null;
-  saveTrainState(st);document.activeElement.blur();hideModal();renderWorkout();
-  if(anchorTop!==null)requestAnimationFrame(()=>{const updated=document.querySelector('[data-exercise-card="'+ex+'"]');if(updated)window.scrollBy(0,updated.getBoundingClientRect().top-anchorTop)});
+  state.currentSets=st.currentSets;state.last=st.last;saveTrainState(st);
+  if(card){
+   for(let setNo=1;setNo<=setCount;setNo++){
+    const tile=card.querySelector('[data-set-number="'+setNo+'"]'),next=suggestion(name,setNo),entry=next.entry;if(!tile)continue;
+    tile.classList.remove('done','short');if(entry)tile.classList.add(Number(entry.reps)>=Number(entry.target)?'done':'short');
+    const displayWeight=entry?.weight||next.weight,displayReps=entry?entry.reps+'/'+entry.target:next.target;
+    tile.innerHTML='<small>'+(displayWeight?displayWeight+' kg':'Valitse kg')+'</small>'+displayReps+(entry?' ✓':' toistoa');
+   }
+   if(/tangolla/i.test(name)){const details=card.querySelector('details'),text=details?.querySelector('p'),first=suggestion(name,1),ramp=rampUp(name,first.weight);if(text)text.textContent=ramp.length?ramp.map(x=>x.weight+' kg × '+x.reps).join(' → ')+' · nämä eivät kuulu työsarjoihin':'Kirjaa työpaino sarjanäkymässä, niin sovellus näyttää nousujohteisen lämmittelyn.'}
+  }
+  hideModal();
  };
  $('cooldownCard').style.display='block';$('cooldownCard').innerHTML='<div class="eyebrow">Treenin jälkeen · vapaaehtoinen</div><p class="sub">Tee halutessasi muutama minuutti rauhallista loppuverryttelyä ja kevyitä venytyksiä. Venytä miellyttävään tuntemukseen, älä kipuun.</p>';
 }
