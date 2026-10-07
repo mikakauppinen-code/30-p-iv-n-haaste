@@ -280,13 +280,14 @@ function openTrainingSettings(){
  window.scrollTo({top:0,behavior:'smooth'});
 }
 function showTrainingMain(){
+ document.activeElement?.blur?.();
  $('trainingSetupPanel').style.display='none';$('trainingMainPanel').style.display='block';
  const p=JSON.parse(localStorage.getItem(trainProfileKey)||'{}'),schedule=trainingSchedule(p),state=trainState();
  let dayIndex=Number.isInteger(state.currentDayIndex)?state.currentDayIndex:schedule.indexOf(state.currentType);if(dayIndex<0||dayIndex>=schedule.length)dayIndex=0;state.currentDayIndex=dayIndex;state.currentType=schedule[dayIndex];saveTrainState(state);selectTrainingDay(schedule,dayIndex);
  const splitLabel=(p.trainSplit==='3'?'3-jakoinen':p.trainSplit==='4'?'4-jakoinen':(p.trainGoal==='Voiman lisääminen'?'voimapainotteinen':(p.trainFrequency==='1–2'||p.trainFrequency==='3'?'koko keho A/B':'ylä-/alavartalo')));
  const times=p.trainMuscleFrequency==='1'?'kerran viikossa':p.trainMuscleFrequency==='2'?'kahdesti viikossa':(p.trainGoal==='Voiman lisääminen'?'voimanostotyylinen voimaharjoittelu':p.trainGoal==='Lihaskasvu'?'lihaksille tavoitellaan kahta harjoituskertaa viikossa':'tavoitteen mukaan');
  $('trainingRecommendation').textContent='Suositus: '+splitLabel+' · '+p.trainFrequency+' treeniä viikossa · '+times+'. Painonlisäysehdotus huomioi valitsemasi salin käsipaino- ja levypainoporrastuksen. Jos työsarjat onnistuvat, uusi paino kokeillaan ensin yhdessä sarjassa; muut sarjat pysyvät aiemmassa painossa. Ehdotusta voi aina muuttaa, ja salin vaihtuessa painoportaat voi päivittää asetuksista.';
- requestAnimationFrame(()=>window.scrollTo(0,0));
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;}));
 }
 $('saveTrainProfile').onclick=()=>{
  const fields=['trainGoal','trainFrequency','trainSplit','trainMuscleFrequency','trainExperience','trainWork','trainOtherActivity','trainAge','trainHeight','trainWeight','trainSex','dumbbellSmallStep','dumbbellLargeStep','barbellPlateStep'];
