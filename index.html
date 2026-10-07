@@ -9,11 +9,11 @@
 <style>
 :root{--bg:#f7f2e8;--card:#fffdf8;--text:#23211d;--muted:#746f66;--line:#e3ddd1;--accent:#d97a32;--green:#2f6d5a;--shadow:0 10px 30px rgba(60,45,25,.08)}
 *{box-sizing:border-box}html{background:var(--bg)}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}
-.app{max-width:760px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(100px + env(safe-area-inset-bottom))}.page{display:none}.page.active{display:block}.pageTitle{margin:4px 0 14px;font-size:30px;letter-spacing:-.6px}.bottomNav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:760px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,253,248,.96);border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom));z-index:15;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.navBtn{border:0;background:transparent;color:var(--muted);padding:6px 2px 4px;border-radius:12px;font-size:11px;font-weight:800}.navBtn span{display:block;font-size:22px;line-height:24px;margin-bottom:2px}.navBtn.active{color:var(--green);background:#e7f0eb}
+.app{max-width:760px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(100px + env(safe-area-inset-bottom))}.page{display:none}.page.active{display:block}.pageTitle{margin:4px 0 14px;font-size:30px;letter-spacing:-.6px}.bottomNav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:760px;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(255,253,248,.96);border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom));z-index:15;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.navBtn{border:0;background:transparent;color:var(--muted);padding:6px 2px 4px;border-radius:12px;font-size:11px;font-weight:800}.navBtn span{display:block;font-size:22px;line-height:24px;margin-bottom:2px}.navBtn.active{color:var(--green);background:#e7f0eb}
 .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:12px}h1{font-size:30px;margin:0;letter-spacing:-.6px}.date{color:var(--muted);font-size:14px;margin-top:5px}.streak{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:9px 12px;text-align:center;box-shadow:var(--shadow);min-width:90px}.streak b{display:block;font-size:25px;color:var(--accent)}.streak span{font-size:11px;color:var(--muted)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:14px 0;box-shadow:var(--shadow)}.hero{background:linear-gradient(160deg,#fff7e8,#fffdf8 58%)}.eyebrow{font-size:12px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.quote{font-size:21px;line-height:1.35;font-weight:800;margin-top:8px}.sub{color:var(--muted);line-height:1.45;margin:7px 0 0}.big{width:100%;border:0;border-radius:18px;padding:16px;background:var(--green);color:#fff;font-weight:800;font-size:18px;margin-top:14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff}.option input{width:22px;height:22px;accent-color:var(--green)}label.title{display:block;font-weight:800;margin:0 0 8px}select,textarea,input[type=text],input[type=number],input[type=time]{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;color:var(--text)}textarea{min-height:90px;resize:vertical}.moods,.statsGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.details{display:grid;gap:12px;margin-top:14px}.btn{border:0;border-radius:14px;padding:13px 14px;background:#eee8dd;font-weight:800;color:var(--text)}.btn.primary{background:var(--accent);color:#fff}.btn.green{background:var(--green);color:#fff}.btn.full{width:100%}.btnrow{display:flex;gap:8px;flex-wrap:wrap}.weather{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.weatherTemp{font-size:29px;font-weight:850}.weatherIcon{font-size:36px}.mini{font-size:12px;color:var(--muted)}.progress{height:10px;background:#eee7da;border-radius:99px;overflow:hidden;margin-top:9px}.progress>div{height:100%;background:var(--accent)}.stat{border:1px solid var(--line);border-radius:16px;padding:12px;background:#fff}.stat b{display:block;font-size:25px;color:var(--green)}.tabs{display:flex;gap:8px;margin:12px 0}.tabs .active{background:var(--green);color:#fff}#periodTabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}#periodTabs .btn{width:100%;min-width:0;padding:12px 6px;text-align:center;white-space:nowrap}.historyItem{padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer}.historyItem:last-child{border-bottom:0}.historyHead{display:flex;justify-content:space-between;font-weight:850}.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.badge{font-size:12px;border-radius:999px;padding:5px 8px;background:#f0eadf}.thanks{margin-top:7px;line-height:1.4}.calNav{display:grid;grid-template-columns:46px 1fr 46px;gap:8px;align-items:center;margin-top:12px}.calNav button{border:1px solid var(--line);background:#f4efe5;border-radius:14px;height:44px;font-size:26px;font-weight:800;color:var(--green)}.calMonth{text-align:center;font-size:18px;font-weight:850;text-transform:capitalize}.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:10px}.cal div{text-align:center;padding:8px 2px;border-radius:10px;font-size:12px}.cal .head{font-weight:800;color:var(--muted)}.cal .has{background:#e7f0eb;font-weight:800}.cal .today{outline:2px solid var(--accent)}.cal [data-day]{cursor:pointer;min-height:46px;display:flex;flex-direction:column;align-items:center;justify-content:center}.cal [data-day]:active{background:#efe8db}.modal{position:fixed;inset:0;background:rgba(20,18,15,.45);display:none;align-items:flex-end;z-index:20}.sheet{background:var(--card);width:100%;max-width:760px;margin:0 auto;border-radius:24px 24px 0 0;padding:20px;max-height:85vh;overflow:auto}.sheet h2{margin:0 0 10px}.timerWrap{display:none;text-align:center;padding-top:12px}.timer{font-size:46px;font-weight:850}.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(18px);background:#24211d;color:#fff;padding:11px 16px;border-radius:999px;opacity:0;transition:.25s;z-index:30;white-space:nowrap}.toast.show{opacity:1;transform:translateX(-50%)}.editbar{display:none;background:#fff0dc;border:1px solid #edc69c;border-radius:14px;padding:11px;margin:10px 0}.timegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.timebox{border:1px solid var(--line);border-radius:16px;padding:12px;background:#fff}.timebox .mini{display:block;margin-bottom:6px}.durationLine{font-weight:800;color:var(--green);margin-top:8px}.footer{font-size:12px;color:var(--muted);text-align:center;line-height:1.45;margin-top:18px}
 @media(max-width:520px){.grid{grid-template-columns:1fr}.statsGrid{grid-template-columns:1fr 1fr}}
-</style>
+.trainCard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0}.trainHead{display:flex;justify-content:space-between;gap:12px;align-items:center}.exercise{border-top:1px solid var(--line);padding:13px 0}.setrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.setcheck{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px}.setcheck.done{background:#e7f0eb;color:var(--green);border-color:var(--green)}.setInput{width:72px;padding:8px;border:1px solid var(--line);border-radius:10px;background:#fff}.setTile{min-width:78px;min-height:82px;border:0;border-radius:16px;background:#171717;color:white;padding:9px 7px;font-weight:800}.setTile small{display:block;font-size:12px;margin-bottom:5px}.setTile.done{background:#2fbd47}.setTile.short{background:#f1aa00}.setModal{position:fixed;inset:0;z-index:50;background:rgba(20,20,20,.68);display:flex;align-items:flex-end;justify-content:center;padding:14px}.setModalCard{width:min(100%,520px);background:#fffdf8;border-radius:24px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.25)}.setModalCard h2{margin:4px 0 8px}.setModalCard input{width:100%;margin:0 0 14px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:20px}.setModalCard .btnrow{margin-top:12px;justify-content:flex-end}.trainGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:520px){.trainGrid{grid-template-columns:1fr}}</style>
 </head>
 <body><div class="app">
 <main class="page active" id="page-today">
@@ -31,6 +31,13 @@
 <section class="card"><div class="eyebrow">Päivän treeni</div><label class="title" style="margin-top:8px">Mitä teit tänään?</label><div class="grid"><label class="option"><input type="checkbox" id="gym"> Salitreeni</label><label class="option"><input type="checkbox" id="hiit"> HIIT-treeni</label><label class="option"><input type="checkbox" id="otherWorkout"> Muu treeni</label><label class="option"><input type="checkbox" id="restDay"> Lepo / palautuminen</label></div><div class="details"><div id="gymDetails"><label class="title">Salitreeni – mitä treenasit?</label><input type="text" id="gymFocus" placeholder="Esim. rinta + ojentajat, selkä, jalat…"></div><div id="otherDetails"><label class="title">Muu treeni – mikä?</label><input type="text" id="otherWorkoutName" placeholder="Esim. pyöräily, uinti, pitkä kävely…"></div><div><label class="title">Treenin kesto (min)</label><input type="number" id="workoutMinutes" min="0" max="600" inputmode="numeric" placeholder="Esim. 60"></div><div><label class="title">Miltä treeni tuntui?</label><select id="workoutFeel"><option value="">Valitse 1–5</option><option value="1">1 – Erittäin raskaalta / huonolta</option><option value="2">2 – Raskaalta</option><option value="3">3 – Kohtalaiselta</option><option value="4">4 – Hyvältä</option><option value="5">5 – Erittäin hyvältä</option></select></div><div><label class="title">Treeniin liittyvä huomio</label><textarea id="workoutNotes" placeholder="Vapaaehtoinen huomio…"></textarea></div></div></section>
 <section class="card"><label class="title">Kiitos itselleni tänään</label><textarea id="thanks" placeholder="Mistä kiität itseäsi tänään?"></textarea><button class="btn primary full" id="save" style="margin-top:12px">Tallenna päivä</button></section>
 </main>
+<main class="page" id="page-training"><h1 class="pageTitle">Treenit 🏋️</h1><section id="trainingSetupPanel" class="card"><div class="eyebrow">Aloitusasetukset</div><p class="sub">Kerro treenitoiveistasi ja perustietosi, niin teen sinulle aloitusohjelman. Paino, pituus, ikä ja sukupuoli auttavat sovittamaan lähtökohtia.</p><div class="details"><div class="trainGrid"><div><label class="title">Tavoite</label><select id="trainGoal"><option>Lihaskasvu</option><option>Voiman lisääminen</option><option>Kunnon ylläpito</option><option>Paluu tauon jälkeen</option></select></div><div><label class="title">Treenejä viikossa</label><select id="trainFrequency"><option>1–2</option><option>3</option><option>4</option><option>5 tai useammin</option></select></div><div><label class="title">Jako</label><select id="trainSplit"><option value="auto">Suosittele tavoitteen mukaan</option><option value="3">Kolmijakoinen (työntävät / vetävät / jalat)</option><option value="4">Nelijakoinen (ylä- / alavartalo)</option></select></div><div><label class="title">Lihasryhmän treenitiheys</label><select id="trainMuscleFrequency"><option value="auto">Suosittele tavoitteen mukaan</option><option value="2">Kahdesti viikossa</option><option value="1">Kerran viikossa</option></select></div><div><label class="title">Harjoittelukokemus</label><select id="trainExperience"><option>En ole juuri treenannut</option><option>Alle vuosi</option><option>1–3 vuotta</option><option>4–10 vuotta</option><option>Yli 10 vuotta</option></select></div><div><label class="title">Työn/ arjen kuormitus</label><select id="trainWork"><option>Pääosin istumista</option><option>Kevyttä liikkumista</option><option>Paljon kävelyä tai seisomista</option><option>Fyysisesti raskasta työtä</option><option>Erittäin raskasta työtä</option></select></div></div><label class="title">Muu liikunta viikossa (vapaaehtoinen)</label><input id="trainOtherActivity" type="text" placeholder="Esim. kävely 3 × 30 min, pyöräily"><div class="trainGrid"><div><label class="title">Ikä</label><input id="trainAge" type="number" min="13" max="110" required placeholder="Vuotta"></div><div><label class="title">Pituus (cm)</label><input id="trainHeight" type="number" min="100" max="230" required placeholder="Senttimetriä"></div><div><label class="title">Paino (kg)</label><input id="trainWeight" type="number" min="30" max="300" required placeholder="Kilogrammaa"></div><div><label class="title">Sukupuoli painoehdotusta varten</label><select id="trainSex" required><option value="">Valitse</option><option value="Nainen">Nainen</option><option value="Mies">Mies</option><option value="Muu">Muu / en halua kertoa</option></select></div></div><div class="card" style="margin-top:14px;background:#f8f6f0"><div class="eyebrow">Salin painoportaat</div><p class="sub">Valitse tämän salin välineitä vastaavat painot. Voit muuttaa asetuksia myöhemmin, jos vaihdat salia tai välineet ovat erilaiset.</p><div class="trainGrid"><div><label class="title" for="dumbbellSmallStep">Käsipainot 1–10 kg</label><select id="dumbbellSmallStep"><option value="0.5">0,5 kg:n välein</option><option value="1" selected>1 kg:n välein</option></select></div><div><label class="title" for="dumbbellLargeStep">Käsipainot yli 10 kg</label><select id="dumbbellLargeStep"><option value="2">2 kg:n välein</option><option value="2.5" selected>2,5 kg:n välein</option></select><div class="mini">Pienet lisäpainot voivat olla käsipainoihin kiinnitettäviä lisäpainoja. Yli 10 kg:n valinta koskee myös yli 20 kg:n painoja.</div></div><div><label class="title" for="barbellPlateStep">Tangon pienin levypaino per puoli</label><select id="barbellPlateStep"><option value="0.5">0,5 kg per puoli (1 kg yhteensä)</option><option value="1">1 kg per puoli (2 kg yhteensä)</option><option value="1.25" selected>1,25 kg per puoli (2,5 kg yhteensä)</option><option value="2.5">2,5 kg per puoli (5 kg yhteensä)</option></select></div></div></div><button class="btn primary full" id="saveTrainProfile" style="margin-top:12px">Luo aloitustreeni</button></div></section>
+<div id="trainingMainPanel" style="display:none">
+<section class="card"><div class="trainHead"><div class="eyebrow">Oma treenisuunnitelma</div><button class="btn" id="editTrainingSettings">⚙️ Asetukset</button></div><p class="sub">Treenipäivä valitaan aloitusasetustesi mukaan.</p><p class="mini" id="trainingRecommendation"></p><p class="mini" id="trainingDayLabel" style="font-weight:800"></p><details class="mini"><summary>Valitse toinen treenipäivä</summary><label class="title" for="trainType" style="margin-top:10px">Aloita tästä treenistä</label><select id="trainType" aria-label="Treenipäivä"></select></details><div class="trainGrid" style="margin-top:12px"><div><label class="title">Lämmittely</label><select id="warmChoice"><option value="short">Lyhyt</option><option value="normal">Tavallinen</option><option value="long">Pidempi</option></select></div></div><div class="btnrow" style="margin-top:12px"><button class="btn green" id="showWorkout">Näytä tämän päivän treeni</button><button class="btn" id="newWorkout">Aloita seuraava treeni</button></div></section>
+<section id="warmupCard" class="trainCard" style="display:none"></section><section id="workoutList"></section>
+<div id="setEntryModal" class="setModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="setModalTitle"><div class="setModalCard"><div class="eyebrow">KIRJAA SARJA</div><h2 id="setModalTitle">Sarja</h2><p class="sub" id="setModalHint"></p><label class="title" for="setModalWeight">Paino (kg)</label><input id="setModalWeight" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Valitse paino"><div class="mini" id="setModalWarmup" style="margin:-4px 0 14px"></div><label class="title" for="setModalReps">Toteutuneet toistot</label><select id="setModalReps"></select><div class="btnrow"><button class="btn" id="cancelSetEntry">Peruuta</button><button class="btn primary" id="saveSetEntry">Tallenna sarja</button></div></div></div>
+<section id="cooldownCard" class="trainCard" style="display:none"></section>
+<section class="card"><div class="eyebrow">Treeni vapaapäivänä</div><p class="sub">Valinnainen kevyt liikkuvuushetki: rauhalliset nilkka-, lonkka- ja rintarangan liikkeet sekä kevyt venyttely. Lopeta, jos jokin liike aiheuttaa kipua.</p></section></div></main>
 <main class="page" id="page-progress"><h1 class="pageTitle">Kehitys 📈</h1>
 <section class="card"><div class="eyebrow">Ajanjakso</div><div class="tabs" id="periodTabs"></div><div class="mini">Valinnat mukautuvat haasteesi pituuteen.</div></section>
 <section class="card"><div class="eyebrow">Älykäs yhteenveto</div><div class="quote" id="smartSummary"></div><div class="sub" id="smartSummaryExtra"></div></section>
@@ -48,11 +55,12 @@
 <div class="footer">Merkinnät säilyvät tämän laitteen sovellusmuistissa. Sää: Open-Meteo. Nimipäivät haetaan verkkopalvelusta. Tee varmuuskopio säännöllisesti.</div>
 </main>
 </div>
-<nav class="bottomNav" aria-label="Päävalikko"><button class="navBtn active" data-page="today"><span>☀️</span>Tänään</button><button class="navBtn" data-page="progress"><span>📈</span>Kehitys</button><button class="navBtn" data-page="calendar"><span>📅</span>Kalenteri</button><button class="navBtn" data-page="more"><span>•••</span>Lisää</button></nav>
+<nav class="bottomNav" aria-label="Päävalikko"><button class="navBtn active" data-page="today"><span>☀️</span>Tänään</button><button class="navBtn" data-page="training"><span>🏋️</span>Treenit</button><button class="navBtn" data-page="progress"><span>📈</span>Kehitys</button><button class="navBtn" data-page="calendar"><span>📅</span>Kalenteri</button><button class="navBtn" data-page="more"><span>•••</span>Lisää</button></nav>
 <div class="modal" id="modal"><div class="sheet"><h2 id="modalTitle"></h2><div id="modalBody"></div><div class="btnrow" style="margin-top:16px"><button class="btn green" id="editEntry">Muokkaa päivää</button><button class="btn" id="closeModal">Sulje</button></div></div></div><div class="toast" id="toast"></div>
 <script>
 const $=id=>document.getElementById(id), pad=n=>String(n).padStart(2,'0');
 const storeKey='aamurutiini-v1', challengeKey='aamurutiini-challenge-v1', todayKey=key(new Date()); let editingKey=todayKey, selectedKey=null, statPeriod=7, calendarView=new Date(new Date().getFullYear(),new Date().getMonth(),1);
+if(new URLSearchParams(location.search).get('resetTest')==='1'){['aamurutiini-v1','aamurutiini-challenge-v1','aamurutiini-rain-timer-v1','aamurutiini-training-v1','aamurutiini-training-profile-v1'].forEach(k=>localStorage.removeItem(k));history.replaceState(null,'',location.pathname+'#training')}
 function showPage(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.navBtn').forEach(b=>b.classList.toggle('active',b.dataset.page===name));window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.navBtn').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 function key(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
@@ -132,6 +140,165 @@ function cancelFiveMinuteTimer(){clearRainInterval();running=false;endAt=0;secs=
 function restoreRainTimer(){try{const x=JSON.parse(localStorage.getItem(rainTimerKey)||'null');if(!x)return;if(x.running&&x.endAt){running=true;endAt=Number(x.endAt);$('timerWrap').style.display='block';$('timerStatus').textContent='Aika käynnistyi aamulenkistä.';syncRainTimer();if(running)startRainInterval()}}catch{localStorage.removeItem(rainTimerKey)}}
 $('startWalk').onclick=()=>{if(!$('walkStart').value||$('walkEnd').value){$('walk').checked=true;$('walkStart').value=nowTime();$('walkEnd').value='';beginFiveMinuteTimer();toast('Aamulenkki alkoi '+$('walkStart').value)}else{$('walkEnd').value=nowTime();if(running)cancelFiveMinuteTimer();toast('Aamulenkki päättyi '+$('walkEnd').value)}updateDurations();updateWalkButton()};
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncRainTimer()});window.addEventListener('focus',syncRainTimer);
-syncRainTimer();restoreRainTimer();loadEntry(todayKey);render();weather();nameday();
+
+// Treenit-osio on erillään aamurutiinin ja haasteen tallennuksesta.
+const trainKey='aamurutiini-training-v1', trainProfileKey='aamurutiini-training-profile-v1';
+const plans={
+full:[['Jalkaprässi','Boksikyykky','Goblet-kyykky'],['Rintaprässi laitteessa','Punnerrus','Käsipainopenkki'],['Ylätalja rintaan','Rintatuettu soutu','Taljasoutu'],['Reisikoukistus','Lantionnosto','Romanialainen maastaveto käsipainoilla']],
+fullB:[['Boksikyykky','Jalkaprässi','Goblet-kyykky'],['Käsipainopenkki','Rintaprässi laitteessa','Punnerrus'],['Yhden käden ylätalja','Rintatuettu soutu','Taljasoutu'],['Lantionnosto','Reisikoukistus','Romanialainen maastaveto käsipainoilla']],
+upper:[['Rintaprässi laitteessa','Käsipainopenkki','Punnerrus'],['Ylätalja rintaan','Rintatuettu soutu','Taljasoutu'],['Sivuvipunosto käsipainoilla','Pystypunnerrus laitteessa','Landmine-punnerrus'],['Hauiskääntö käsipainoilla','Ojentajapunnerrus taljassa','Face pull']],
+lower:[['Jalkaprässi','Boksikyykky','Goblet-kyykky'],['Romanialainen maastaveto käsipainoilla','Lantionnosto','Reisikoukistus'],['Reisiojennus','Askelkyykky tuella','Pohjenousu laitteessa']],
+strength:[['Takakyykky tangolla','Jalkaprässi','Goblet-kyykky'],['Penkkipunnerrus tangolla','Käsipainopenkki','Rintaprässi laitteessa'],['Maastaveto tangolla','Romanialainen maastaveto käsipainoilla','Lantionnosto'],['Soutu tangolla','Rintatuettu soutu','Taljasoutu']],
+push:[['Rintaprässi laitteessa','Punnerrus','Käsipainopenkki'],['Ylätalja rintaan','Rintatuettu soutu','Taljasoutu'],['Pystypunnerrus laitteessa','Sivuvipunosto käsipainoilla','Landmine-punnerrus'],['Ojentajapunnerrus taljassa','Ojentajapunnerrus käsipainolla']],
+pull:[['Ylätalja rintaan','Avustettu leuanveto','Yhden käden ylätalja'],['Rintatuettu soutu','Taljasoutu','Käsipainosoutu'],['Face pull','Takaolkapäälaite','Takaolkapään vipunosto'],['Hauiskääntö käsipainoilla','Hauiskääntö taljassa','Vasarakääntö']],
+legs:[['Jalkaprässi','Goblet-kyykky','Boksikyykky'],['Romanialainen maastaveto käsipainoilla','Lantionnosto','Reisikoukistus'],['Reisiojennus','Askelkyykky tuella','Pohjenousu laitteessa']],
+hiit:[['Reipas työjakso','Kevyt palautus','Toista sopiva määrä']],
+mobility:[['Rauhallinen kävely tai pyöräily','Nilkan liikkuvuus','Lonkan liikkuvuus','Rintarangan kierto']]
+};
+function trainState(){try{return JSON.parse(localStorage.getItem(trainKey)||'{}')}catch{return {}}}
+function saveTrainState(x){localStorage.setItem(trainKey,JSON.stringify(x))}
+function equipmentStep(name,weight,profile={}){
+ const w=Number(weight)||0;
+ if(/tangolla/i.test(name))return Math.max(.5,(Number(profile.barbellPlateStep)||1.25)*2);
+ if(/käsipaino|vipunosto|goblet|vasarakääntö/i.test(name)){
+  if(w<10)return 1;
+  if(w<=10)return Number(profile.dumbbellSmallStep)||1;
+  return Number(profile.dumbbellLargeStep)||2.5;
+ }
+ return 2.5;
+}
+function loadIncrease(name,weight,profile={}){
+ const w=Number(weight)||0,step=equipmentStep(name,w,profile),rate=profile.trainSex==='Mies' ? 0.05 : profile.trainSex==='Nainen' ? 0.025 : 0.0375;
+ const byRate=Math.ceil((w*rate-1e-8)/step)*step;
+ return Math.max(step,byRate);
+}
+function rampUp(name,weight){
+ const w=Number(weight)||0;
+ if(!/tangolla/i.test(name)||w<60)return [];
+ const step=5,values=[.43,.57,.71,.86].map((pct,i)=>({weight:Math.max(20,Math.round(w*pct/step)*step),reps:[8,5,3,1][i]}));
+ return values.filter((x,i)=>x.weight<w&&(!i||x.weight>values[i-1].weight));
+}
+function repsOptions(target){
+ const t=Number(target)||1,min=t>=12?6:1,max=t>=12?15:Math.min(12,t+2);
+ return Array.from({length:max-min+1},(_,i)=>min+i);
+}
+function fillRepPicker(target,value){
+ const options=repsOptions(target);$('setModalReps').innerHTML=options.map(n=>'<option value="'+n+'">'+n+' toistoa'+(n===Number(target)?' · ohjelman tavoite':'')+'</option>').join('');
+ $('setModalReps').value=String(options.includes(Number(value))?Number(value):Number(target));
+}
+function updateSetModalWarmup(name,weight){
+ const ramp=rampUp(name,weight);
+ $('setModalWarmup').textContent=ramp.length?'Ennen työsarjaa: lämmittele asteittain · '+ramp.map(x=>x.weight+' kg × '+x.reps).join(' → ')+'. Nämä eivät kuulu työsarjoihin.':'';
+}
+function trainingSchedule(p){
+ const goal=p.trainGoal||'Lihaskasvu', split=p.trainSplit||'auto', freq=p.trainFrequency||'3', muscle=p.trainMuscleFrequency||'auto';
+ if(goal==='Voiman lisääminen')return ['strength'];
+ if(muscle==='2'||(muscle==='auto'&&goal==='Lihaskasvu'))return (freq==='1–2'||freq==='3')?['full','fullB','full']:['upper','lower','upper','lower'];
+ if(split==='3')return ['push','pull','legs'];
+ if(split==='4')return ['upper','lower','upper','lower'];
+ if(freq==='1–2')return ['full','fullB'];
+ if(freq==='3')return ['full','fullB','full'];
+ return ['upper','lower'];
+}
+function trainingTypeLabel(type){
+ return ({full:'Koko keho A',fullB:'Koko keho B',upper:'Ylävartalo',lower:'Alavartalo',strength:'Voimatreeni',push:'Työntävät',pull:'Vetävät',legs:'Jalat',hiit:'HIIT / intervallit',mobility:'Liikkuvuus ja palautuminen'})[type]||'Treeni';
+}
+function selectTrainingDay(schedule,index){
+ const select=$('trainType');
+ select.innerHTML=schedule.map((type,i)=>'<option value="'+i+'">Treeni '+(i+1)+' · '+trainingTypeLabel(type)+'</option>').join('');
+ select.value=String(index);
+}
+function renderWorkout(){
+ const state=trainState(),profile=JSON.parse(localStorage.getItem(trainProfileKey)||'{}'),schedule=trainingSchedule(profile);
+ let dayIndex=Number.isInteger(state.currentDayIndex)?state.currentDayIndex:schedule.indexOf(state.currentType);
+ if(dayIndex<0||dayIndex>=schedule.length)dayIndex=0;
+ const type=schedule[dayIndex],chosen=state[type]||plans[type].map(x=>x[0]);
+ $('trainingDayLabel').textContent='Aloitusvuorossa: Treeni '+(dayIndex+1)+' · '+trainingTypeLabel(type);
+ if($('trainType').options.length)$('trainType').value=String(dayIndex);
+ const beginner=profile.trainExperience==='En ole juuri treenannut'||profile.trainExperience==='Alle vuosi'||profile.trainGoal==='Paluu tauon jälkeen';
+ const setCount=beginner?2:3,baseTarget=profile.trainGoal==='Voiman lisääminen'?5:9,repRange=profile.trainGoal==='Voiman lisääminen'?'3–6':'8–12';
+ const warm=$('warmChoice').value,warmText=warm==='long'?'8–10 min kevyttä laitetta sekä 2–3 valinnaista liikettä päivän harjoitukseen.':'5–10 min kevyttä kävelyä, pyöräilyä tai muuta tuttua laitetta. Tarkoitus on lämmetä, ei väsyä.';
+ const current=()=>{state.currentSets=state.currentSets||{};state.currentSets[type]=state.currentSets[type]||{};return state.currentSets[type]};
+ const suggestion=(name,n)=>{
+  const logged=current()[name]||{},prev=logged[n-1],last=state.last&&state.last[name]||{},profile=JSON.parse(localStorage.getItem(trainProfileKey)||'{}');
+  const history=state.history&&state.history[name]||[],recent=history.find(x=>x.set===n),allMet=history.length>=setCount&&history.every(x=>Number(x.weight)>0&&Number(x.reps)>=Number(x.target));
+  let target=baseTarget,weight=recent?.weight||last.weight||'';
+  if(allMet&&history.length>=setCount){
+   const values=history.slice().sort((a,b)=>a.set-b.set),top=Math.max(...values.map(x=>Number(x.weight)||0)),min=Math.min(...values.map(x=>Number(x.weight)||0));
+   if(top>min){let firstLower=values.find(x=>(Number(x.weight)||0)<top);if(firstLower&&firstLower.set===n)weight=top;else if(n===1)weight=values[0].weight;}
+   else if(n===1)weight=top+loadIncrease(name,top,profile);
+  }else if(history.length&&history.some(x=>Number(x.reps)<Number(x.target))){
+   const safeWeight=Math.min(...history.map(x=>Number(x.weight)||0));if(safeWeight)weight=safeWeight;
+  }
+  if(prev&&Number(prev.reps)<Number(prev.target)){weight=prev.weight||weight;if(n>=3){target=Math.max(1,baseTarget-1);weight=weight?Math.max(0,Number(weight)-loadIncrease(name,weight,profile)):''}else target=Math.max(1,Number(prev.reps)-1)}
+  return {target,weight,entry:logged[n]||null};
+ };
+ $('warmupCard').style.display='block';$('warmupCard').innerHTML='<div class="eyebrow">Alkulämmittely</div><p>'+warmText+'</p><details><summary>Miksi lämmitellä?</summary><p class="sub">Kevyt alkuverryttely nostaa kehon lämpötilaa ja valmistaa asteittain harjoitteluun. Jos laitteen käyttö on epäselvää, pyydä salin henkilökunnalta opastus.</p></details>';
+ $('workoutList').innerHTML=chosen.map((name,i)=>{
+  const first=suggestion(name,1),ramp=rampUp(name,first.weight),rampHtml=/tangolla/i.test(name)?'<details class="mini" style="margin-top:8px"><summary>Lämmittely ennen työsarjoja</summary><p>'+(ramp.length?ramp.map(x=>x.weight+' kg × '+x.reps).join(' → ')+' · nämä eivät kuulu työsarjoihin':'Kirjaa työpaino sarjanäkymässä, niin sovellus näyttää nousujohteisen lämmittelyn.')+'</p></details>':'';
+  const tiles=Array.from({length:setCount},(_,j)=>{const n=j+1,s=suggestion(name,n),e=s.entry,cls=e?(Number(e.reps)>=Number(e.target)?'done':'short'):'';const wt=e?.weight||s.weight;const rep=e?e.reps+'/'+e.target:s.target;return '<button class="setTile '+cls+'" data-open-set="'+i+'" data-set-number="'+n+'"><small>'+(wt?wt+' kg':'Valitse kg')+'</small>'+rep+(e?' ✓':' toistoa')+'</button>'}).join('');
+  return '<section class="trainCard" data-exercise-card="'+i+'"><div class="trainHead"><b>'+name+'</b><button class="btn" data-swap="'+i+'">Vaihda liike</button></div><div class="mini">'+(type==='hiit'?'Tee työ- ja palautusjaksot oman kuntosi mukaan.':type==='mobility'?'Rauhallisesti, ilman pakottamista.':setCount+' työsarjaa · '+repRange+' toistoa · lepää tarvittaessa 1–2 min')+'</div>'+rampHtml+(type==='hiit'||type==='mobility'?'':'<div class="setrow">'+tiles+'</div>')+'</section>'
+ }).join('');
+ document.querySelectorAll('[data-swap]').forEach(b=>b.onclick=()=>{const i=+b.dataset.swap,opts=plans[type][i];let idx=opts.indexOf(chosen[i]);chosen[i]=opts[(idx+1)%opts.length];state[type]=chosen;saveTrainState(state);renderWorkout()});
+ const modal=$('setEntryModal'),hideModal=()=>{const restoreY=Number(modal.dataset.returnScrollY)||0;if(modal.contains(document.activeElement))document.activeElement.blur();modal.style.display='none';requestAnimationFrame(()=>window.scrollTo(0,restoreY));setTimeout(()=>window.scrollTo(0,restoreY),500)};
+ $('cancelSetEntry').onclick=hideModal;modal.onclick=e=>{if(e.target===modal)hideModal()};
+ document.querySelectorAll('[data-open-set]').forEach(b=>b.onclick=()=>{
+  const ex=+b.dataset.openSet,n=+b.dataset.setNumber,name=chosen[ex],s=suggestion(name,n),entry=s.entry;
+  modal.dataset.exercise=name;modal.dataset.setNumber=n;modal.dataset.exerciseIndex=ex;modal.dataset.returnScrollY=String(window.scrollY);
+  $('setModalTitle').textContent=name+' · sarja '+n;
+  $('setModalHint').textContent='Ohjelman tavoite: '+s.target+' toistoa. Kirjaa toteutuneet toistot valikosta; myös tavoitetta enemmän voi merkitä.';
+  $('setModalWeight').value=entry?.weight??s.weight;fillRepPicker(s.target,entry?.reps??s.target);updateSetModalWarmup(name,$('setModalWeight').value);modal.style.display='flex';$('setModalWeight').focus();
+ });
+ $('setModalWeight').oninput=()=>updateSetModalWarmup(modal.dataset.exercise,$('setModalWeight').value);
+ $('saveSetEntry').onclick=()=>{
+  const name=modal.dataset.exercise,n=+modal.dataset.setNumber,weight=$('setModalWeight').value,reps=$('setModalReps').value;
+  if(!reps||Number(reps)<0){$('setModalReps').focus();return}
+  const ex=+modal.dataset.exerciseIndex,s=suggestion(name,n),card=document.querySelector('[data-exercise-card="'+ex+'"]');
+  const st=trainState();st.currentSets=st.currentSets||{};st.currentSets[type]=st.currentSets[type]||{};st.currentSets[type][name]=st.currentSets[type][name]||{};
+  st.currentSets[type][name][n]={weight,reps,target:s.target};
+  st.last=st.last||{};if(weight)st.last[name]={weight,reps};
+  state.currentSets=st.currentSets;state.last=st.last;saveTrainState(st);
+  if(card){
+   for(let setNo=1;setNo<=setCount;setNo++){
+    const tile=card.querySelector('[data-set-number="'+setNo+'"]'),next=suggestion(name,setNo),entry=next.entry;if(!tile)continue;
+    tile.classList.remove('done','short');if(entry)tile.classList.add(Number(entry.reps)>=Number(entry.target)?'done':'short');
+    const displayWeight=entry?.weight||next.weight,displayReps=entry?entry.reps+'/'+entry.target:next.target;
+    tile.innerHTML='<small>'+(displayWeight?displayWeight+' kg':'Valitse kg')+'</small>'+displayReps+(entry?' ✓':' toistoa');
+   }
+   if(/tangolla/i.test(name)){const details=card.querySelector('details'),text=details?.querySelector('p'),first=suggestion(name,1),ramp=rampUp(name,first.weight);if(text)text.textContent=ramp.length?ramp.map(x=>x.weight+' kg × '+x.reps).join(' → ')+' · nämä eivät kuulu työsarjoihin':'Kirjaa työpaino sarjanäkymässä, niin sovellus näyttää nousujohteisen lämmittelyn.'}
+  }
+  hideModal();
+ };
+ $('cooldownCard').style.display='block';$('cooldownCard').innerHTML='<div class="eyebrow">Treenin jälkeen · vapaaehtoinen</div><p class="sub">Tee halutessasi muutama minuutti rauhallista loppuverryttelyä ja kevyitä venytyksiä. Venytä miellyttävään tuntemukseen, älä kipuun.</p>';
+}
+$('showWorkout').onclick=renderWorkout;
+ $('newWorkout').onclick=()=>{const s=trainState(),p=JSON.parse(localStorage.getItem(trainProfileKey)||'{}'),schedule=trainingSchedule(p),index=Number.isInteger(s.currentDayIndex)?s.currentDayIndex:Math.max(0,schedule.indexOf(s.currentType)),type=schedule[index],sets=s.currentSets&&s.currentSets[type]||{};s.history=s.history||{};Object.entries(sets).forEach(([name,logged])=>{const previous=Object.entries(logged).map(([set,x])=>({set:+set,weight:Number(x.weight)||0,reps:Number(x.reps)||0,target:Number(x.target)||0})).sort((a,b)=>a.set-b.set);if(previous.length)s.history[name]=previous});s.currentSets=s.currentSets||{};s.currentSets[type]={};s.currentDayIndex=(index+1)%schedule.length;s.currentType=schedule[s.currentDayIndex];s.done={};s.currentSets[s.currentType]={};saveTrainState(s);selectTrainingDay(schedule,s.currentDayIndex);renderWorkout()};
+$('trainType').onchange=()=>{const p=JSON.parse(localStorage.getItem(trainProfileKey)||'{}'),schedule=trainingSchedule(p),s=trainState();s.currentDayIndex=Number($('trainType').value)||0;s.currentType=schedule[s.currentDayIndex]||schedule[0];saveTrainState(s);renderWorkout()};$('warmChoice').onchange=renderWorkout;
+function openTrainingSettings(){
+ $('trainingMainPanel').style.display='none';$('trainingSetupPanel').style.display='block';
+ $('saveTrainProfile').textContent='Tallenna asetukset';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function showTrainingMain(){
+ document.activeElement?.blur?.();
+ $('trainingSetupPanel').style.display='none';$('trainingMainPanel').style.display='block';
+ const p=JSON.parse(localStorage.getItem(trainProfileKey)||'{}'),schedule=trainingSchedule(p),state=trainState();
+ let dayIndex=Number.isInteger(state.currentDayIndex)?state.currentDayIndex:schedule.indexOf(state.currentType);if(dayIndex<0||dayIndex>=schedule.length)dayIndex=0;state.currentDayIndex=dayIndex;state.currentType=schedule[dayIndex];saveTrainState(state);selectTrainingDay(schedule,dayIndex);
+ const splitLabel=(p.trainSplit==='3'?'3-jakoinen':p.trainSplit==='4'?'4-jakoinen':(p.trainGoal==='Voiman lisääminen'?'voimapainotteinen':(p.trainFrequency==='1–2'||p.trainFrequency==='3'?'koko keho A/B':'ylä-/alavartalo')));
+ const times=p.trainMuscleFrequency==='1'?'kerran viikossa':p.trainMuscleFrequency==='2'?'kahdesti viikossa':(p.trainGoal==='Voiman lisääminen'?'voimanostotyylinen voimaharjoittelu':p.trainGoal==='Lihaskasvu'?'lihaksille tavoitellaan kahta harjoituskertaa viikossa':'tavoitteen mukaan');
+ $('trainingRecommendation').textContent='Suositus: '+splitLabel+' · '+p.trainFrequency+' treeniä viikossa · '+times+'. Painonlisäysehdotus huomioi valitsemasi salin käsipaino- ja levypainoporrastuksen. Jos työsarjat onnistuvat, uusi paino kokeillaan ensin yhdessä sarjassa; muut sarjat pysyvät aiemmassa painossa. Ehdotusta voi aina muuttaa, ja salin vaihtuessa painoportaat voi päivittää asetuksista.';
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;}));
+}
+$('saveTrainProfile').onclick=()=>{
+ const fields=['trainGoal','trainFrequency','trainSplit','trainMuscleFrequency','trainExperience','trainWork','trainOtherActivity','trainAge','trainHeight','trainWeight','trainSex','dumbbellSmallStep','dumbbellLargeStep','barbellPlateStep'];
+ const required=['trainAge','trainHeight','trainWeight','trainSex'];for(const id of required){const el=$(id);if(!el.value||!el.checkValidity()){el.reportValidity();el.focus();return}}
+ let p={};fields.forEach(id=>p[id]=$(id).value);
+ localStorage.setItem(trainProfileKey,JSON.stringify(p));
+ showTrainingMain();renderWorkout();toast('Aloitusohjelma luotu ✓');
+};
+$('editTrainingSettings').onclick=openTrainingSettings;
+try{const p=JSON.parse(localStorage.getItem(trainProfileKey)||'{}');Object.keys(p).forEach(id=>{if($(id))$(id).value=p[id]});if(p.dumbbellStep&&!p.dumbbellLargeStep)$('dumbbellLargeStep').value=p.dumbbellStep;const hasBasics=['trainAge','trainHeight','trainWeight','trainSex'].every(id=>p[id]);if(p.trainGoal&&hasBasics){showTrainingMain();renderWorkout()}else if(p.trainGoal){$('saveTrainProfile').textContent='Tallenna perustiedot'}}catch{}
+
+syncRainTimer();restoreRainTimer();loadEntry(todayKey);render();weather();nameday();if(location.hash==='#training')showPage('training');
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script></body></html>
