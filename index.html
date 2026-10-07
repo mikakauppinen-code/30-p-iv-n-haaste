@@ -163,14 +163,14 @@ function equipmentStep(name,weight){
  return 2.5;
 }
 function loadIncrease(name,weight,sex){
- const w=Number(weight)||0,step=equipmentStep(name,w),rate=sex==='Mies'?.05:sex==='Nainen'?.025:.0375;
+ const w=Number(weight)||0,step=equipmentStep(name,w),rate=sex==='Mies' ? 0.05 : sex==='Nainen' ? 0.025 : 0.0375;
  const byRate=Math.floor((w*rate+1e-8)/step)*step;
  return Math.max(step,byRate);
 }
 function rampUp(name,weight){
  const w=Number(weight)||0;
  if(!/tangolla/i.test(name)||w<60)return [];
- const step=2.5,values=[.4,.55,.7,.85].map((pct,i)=>({weight:Math.max(20,Math.round(w*pct/step)*step),reps:[8,5,3,1][i]}));
+ const step=5,values=[.43,.57,.71,.86].map((pct,i)=>({weight:Math.max(20,Math.round(w*pct/step)*step),reps:[8,5,3,1][i]}));
  return values.filter((x,i)=>x.weight<w&&(!i||x.weight>values[i-1].weight));
 }
 function repsOptions(target){
