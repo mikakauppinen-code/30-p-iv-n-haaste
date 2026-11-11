@@ -1,0 +1,18 @@
+{
+  "name": "Muista! – Kalenteri",
+  "short_name": "Muista!",
+  "description": "Muista!-kalenterin kokeiluversio",
+  "start_url": "/muista/v2/",
+  "scope": "/muista/v2/",
+  "display": "standalone",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "icons": [
+    {
+      "src": "/muista/v2/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
