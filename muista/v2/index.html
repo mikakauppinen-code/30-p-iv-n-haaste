@@ -78,7 +78,7 @@ show('<div class="editTop"><h2>'+(id?'Muokkaa tapahtumaa':'Uusi tapahtuma')+'</h
 window._editCalendarIds=selected.slice();
 initTimeWheel(start);initTimeWheel(ending,'end');allDayChanged();repeatFields();
 if(!x.title)$('templateChoice').value=templates.includes('Lääkäriaika')?'Lääkäriaika':templates[0]||'__own';
-pickTemplate();$('modal').scrollTop=0;
+pickTemplate();if(id&&$('templateChoice').value==='__own')$('title').value=x.title;$('modal').scrollTop=0;
 requestAnimationFrame(()=>{$('modal').scrollTop=0})
 }
 function selectCalendars(){
